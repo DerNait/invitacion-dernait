@@ -9,12 +9,23 @@ use App\Models\Rsvp;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Validation\ValidationException;
 
 class RsvpController extends Controller
 {
     public function store(StoreRsvpRequest $request)
     {
         $data = $request->validated();
+
+        // Si el correo ya tiene una respuesta (incluso oculta) y el usuario aún no
+        // confirmó la sobreescritura, avisamos al front para mostrar el modal.
+        // Esto ocurre ANTES de guardar o enviar correos: nada se modifica todavía.
+        $alreadyExists = Rsvp::withTrashed()->where('email', $data['email'])->exists();
+        if ($alreadyExists && ! $request->boolean('confirm_overwrite')) {
+            throw ValidationException::withMessages([
+                'email_exists' => 'Ya existe una confirmación con este correo.',
+            ]);
+        }
 
         // Upsert por correo: si ya confirmó, actualizamos su respuesta.
         // Incluimos los ocultos (soft-deleted) en la búsqueda para no chocar con el

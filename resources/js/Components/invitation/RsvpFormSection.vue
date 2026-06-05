@@ -9,6 +9,7 @@ const props = defineProps({
 
 const submitted = ref(false);
 const lastAttending = ref(true);
+const showOverwriteModal = ref(false);
 
 const form = useForm({
     name: '',
@@ -17,6 +18,7 @@ const form = useForm({
     guests_count: 0,
     guest_names: [],
     message: '',
+    confirm_overwrite: false,
 });
 
 // Muestra/oculta toda la parte de acompañantes (solo front). Pon en true para reactivar.
@@ -45,17 +47,19 @@ const setAttending = (value) => {
     }
 };
 
-const submit = () => {
+const sendForm = () => {
     form
         .transform((data) => ({
             ...data,
             attending: data.attending ? 1 : 0,
+            confirm_overwrite: data.confirm_overwrite ? 1 : 0,
         }))
         .post('/rsvp', {
             preserveScroll: true,
             onSuccess: () => {
                 lastAttending.value = form.attending;
                 submitted.value = true;
+                form.confirm_overwrite = false;
                 // Lleva suavemente a la sección de confirmación para ver el mensaje de éxito.
                 nextTick(() => {
                     document.getElementById('confirmar')?.scrollIntoView({
@@ -64,7 +68,31 @@ const submit = () => {
                     });
                 });
             },
+            onError: (errors) => {
+                // El correo ya existe: pedimos confirmación con el modal en vez de fallar.
+                if (errors.email_exists) {
+                    form.clearErrors('email_exists');
+                    showOverwriteModal.value = true;
+                }
+            },
         });
+};
+
+const submit = () => {
+    form.confirm_overwrite = false;
+    sendForm();
+};
+
+const confirmOverwrite = () => {
+    showOverwriteModal.value = false;
+    form.confirm_overwrite = true;
+    sendForm();
+};
+
+const cancelOverwrite = () => {
+    showOverwriteModal.value = false;
+    form.confirm_overwrite = false;
+    form.clearErrors('email_exists');
 };
 
 const resetForm = () => {
@@ -287,5 +315,51 @@ const resetForm = () => {
                 </Transition>
             </Reveal>
         </div>
+
+        <!-- Modal: aviso de sobreescritura -->
+        <Teleport to="body">
+            <Transition
+                enter-active-class="transition duration-200 ease-out"
+                enter-from-class="opacity-0"
+                leave-active-class="transition duration-150 ease-in"
+                leave-to-class="opacity-0"
+            >
+                <div
+                    v-if="showOverwriteModal"
+                    class="fixed inset-0 z-[110] flex items-center justify-center px-5 bg-pitch-900/80 backdrop-blur-sm"
+                    @click.self="cancelOverwrite"
+                >
+                    <Transition appear enter-active-class="transition duration-300 ease-out" enter-from-class="opacity-0 scale-90 translate-y-3">
+                        <div class="w-full max-w-md rounded-3xl bg-pitch-700 ring-1 ring-gold-500/30 p-7 shadow-2xl text-center">
+                            <div class="mx-auto grid place-items-center w-16 h-16 rounded-full bg-gold-500/15 ring-1 ring-gold-500/40 mb-4">
+                                <FaIcon :icon="['fas', 'circle-check']" class="text-gold-400 text-3xl" />
+                            </div>
+                            <h3 class="font-display text-3xl text-white tracking-wide mb-2">Ya confirmaste antes</h3>
+                            <p class="text-pitch-100/80 leading-relaxed">
+                                Ya existe una confirmación con el correo
+                                <span class="font-semibold text-white break-all">{{ form.email }}</span>.
+                                Si continúas, <span class="text-gold-300 font-semibold">se actualizará</span> tu respuesta anterior.
+                            </p>
+                            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                                <button
+                                    @click="cancelOverwrite"
+                                    class="flex-1 rounded-full bg-pitch-800/70 hover:bg-pitch-600 ring-1 ring-white/10 text-white font-semibold py-3 transition active:scale-95"
+                                >
+                                    Cancelar
+                                </button>
+                                <button
+                                    @click="confirmOverwrite"
+                                    :disabled="form.processing"
+                                    class="flex-1 flex items-center justify-center gap-2 rounded-full bg-gold-500 hover:bg-gold-400 text-pitch-900 font-extrabold py-3 shadow-lg shadow-gold-500/25 transition active:scale-95 disabled:opacity-70"
+                                >
+                                    <FaIcon :icon="['fas', form.processing ? 'spinner' : 'check']" :class="{ 'animate-spin': form.processing }" />
+                                    Sí, actualizar
+                                </button>
+                            </div>
+                        </div>
+                    </Transition>
+                </div>
+            </Transition>
+        </Teleport>
     </section>
 </template>
