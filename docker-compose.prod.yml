@@ -42,7 +42,10 @@ services:
       MYSQL_USER: ${DB_USERNAME:-invitacion}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-${DB_PASSWORD}}
-    # Sin "ports": la base no se expone al exterior, solo es accesible dentro de la red.
+    # Publicado SOLO en el localhost del VPS (no a internet): permite conectarse con
+    # clientes (DBeaver, etc.) a través de un túnel SSH al servidor.
+    ports:
+      - "127.0.0.1:3307:3306"
     volumes:
       - dbdata:/var/lib/mysql
     healthcheck:
