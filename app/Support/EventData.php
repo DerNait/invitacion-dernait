@@ -30,7 +30,7 @@ class EventData
             'dates' => $datetime->copy()->utc()->format('Ymd\THis\Z')
                 . '/' . $end->copy()->utc()->format('Ymd\THis\Z'),
             'details' => $event['description'],
-            'location' => $event['venue_name'] . ', ' . $event['address'],
+            'location' => $event['address'],
         ]);
 
         return [
@@ -127,7 +127,7 @@ class EventData
             'DTEND:' . $end->format('Ymd\THis\Z'),
             'SUMMARY:' . $esc($event['short_title']),
             'DESCRIPTION:' . $esc($event['description']),
-            'LOCATION:' . $esc($event['venue_name'] . ', ' . $event['address']),
+            'LOCATION:' . $esc($event['address']),
             'END:VEVENT',
             'END:VCALENDAR',
         ];
