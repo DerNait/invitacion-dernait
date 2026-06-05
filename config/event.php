@@ -65,7 +65,7 @@ return [
     'food' => [
         'title' => env('EVENT_FOOD_TITLE', 'La comida 🍽️'),
         'description' => env('EVENT_FOOD_DESC', 'Nosotros ponemos el almuerzo, así que tú solo llega con hambre y ganas de celebrar. 😄'),
-        'note' => env('EVENT_FOOD_NOTE', '¿Quieres quedarte al partido de la tarde-noche? ¡Quédate el tiempo que quieras! Si te da hambre más tarde, puedes pedir comida a domicilio a esta misma dirección.'),
+        'note' => env('EVENT_FOOD_NOTE', '¿Quieres quedarte al partido de la noche? ¡Quédate el tiempo que quieras! Si te da hambre más tarde, puedes pedir comida a domicilio a esta misma dirección.'),
     ],
 
     // Mensaje de bienvenida / descripción larga
