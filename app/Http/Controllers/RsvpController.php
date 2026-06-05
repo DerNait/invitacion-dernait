@@ -17,7 +17,9 @@ class RsvpController extends Controller
         $data = $request->validated();
 
         // Upsert por correo: si ya confirmó, actualizamos su respuesta.
-        $rsvp = Rsvp::updateOrCreate(
+        // Incluimos los ocultos (soft-deleted) en la búsqueda para no chocar con el
+        // correo único; si estaba oculto y vuelve a confirmar, lo restauramos.
+        $rsvp = Rsvp::withTrashed()->updateOrCreate(
             ['email' => $data['email']],
             [
                 'name' => $data['name'],
@@ -27,6 +29,10 @@ class RsvpController extends Controller
                 'message' => $data['message'] ?? null,
             ]
         );
+
+        if ($rsvp->trashed()) {
+            $rsvp->restore();
+        }
 
         $this->sendNotifications($rsvp);
 
