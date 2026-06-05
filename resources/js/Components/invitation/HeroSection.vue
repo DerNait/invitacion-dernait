@@ -4,7 +4,8 @@ defineProps({
 });
 
 const scrollToRsvp = () => {
-    document.getElementById('confirmar')?.scrollIntoView({ behavior: 'smooth' });
+    // Lleva a la segunda slide (cuenta regresiva), no directo al formulario.
+    document.getElementById('cuenta-regresiva')?.scrollIntoView({ behavior: 'smooth' });
 };
 </script>
 

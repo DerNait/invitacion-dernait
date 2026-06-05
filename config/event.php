@@ -17,6 +17,10 @@ return [
     'subtitle' => env('EVENT_SUBTITLE', 'A mi fiesta de cumpleaños 🎉'),
     'tagline' => env('EVENT_TAGLINE', 'Edición Mundialista'),
 
+    // Anfitriones (firma "Con cariño, ...") y título corto para los correos
+    'hosts' => env('EVENT_HOSTS', 'Kevin y Marinés'),
+    'short_title' => env('EVENT_SHORT_TITLE', 'El cumpleaños de Kevin'),
+
     // Fecha y hora del evento (ISO 8601). Se usa para la cuenta regresiva.
     'datetime' => env('EVENT_DATETIME', '2026-06-20 13:00:00'),
     'timezone' => env('EVENT_TIMEZONE', 'America/Guatemala'),

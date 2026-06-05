@@ -106,6 +106,12 @@ const resetForm = () => {
                                 ? 'Tu lugar quedó reservado. Te enviamos un correo con todos los detalles.'
                                 : 'Lamentamos que no puedas asistir. ¡Te vamos a extrañar!' }}
                         </p>
+
+                        <div class="mt-6 pt-5 border-t border-white/10">
+                            <p class="text-pitch-100/60 text-sm">Con cariño,</p>
+                            <p class="mt-1 font-display text-2xl text-gold-shine tracking-wide">{{ event.hosts }}</p>
+                        </div>
+
                         <button
                             @click="resetForm"
                             class="mt-6 text-sm font-semibold text-gold-400 hover:text-gold-300 underline underline-offset-4"

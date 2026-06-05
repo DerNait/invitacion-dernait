@@ -17,7 +17,7 @@ const units = [
 </script>
 
 <template>
-    <section class="relative py-16 px-5 bg-pitch-900">
+    <section id="cuenta-regresiva" class="relative py-16 px-5 bg-pitch-900">
         <div class="mx-auto max-w-3xl text-center">
             <Reveal>
                 <p class="font-display text-gold-400 text-2xl tracking-widest mb-1">EL PITAZO INICIAL EN</p>

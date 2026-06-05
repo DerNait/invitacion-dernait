@@ -2,10 +2,7 @@
 # {{ $rsvp->attending ? '¡Nos vemos pronto, ' . $rsvp->name . '! ⚽' : 'Gracias por avisarnos, ' . $rsvp->name }}
 
 @if ($rsvp->attending)
-Tu asistencia a **{{ $event['title'] }} {{ $event['hostName'] }}** quedó confirmada.
-@if ($rsvp->guests_count > 0)
-Reservamos lugar para ti y **{{ $rsvp->guests_count }}** acompañante(s).
-@endif
+Tu asistencia a **{{ $event['shortTitle'] }}** quedó confirmada.
 
 Estos son los detalles para que no se te pase nada:
 
@@ -29,5 +26,5 @@ Si cambias de planes, puedes volver a confirmar desde la invitación.
 @endif
 
 Con cariño,<br>
-{{ $event['hostName'] }}
+{{ $event['hosts'] }}
 @endcomponent

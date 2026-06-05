@@ -22,6 +22,8 @@ class EventData
 
         return [
             'hostName' => $event['host_name'],
+            'hosts' => $event['hosts'],
+            'shortTitle' => $event['short_title'],
             'title' => $event['title'],
             'subtitle' => $event['subtitle'],
             'tagline' => $event['tagline'],
