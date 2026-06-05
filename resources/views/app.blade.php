@@ -6,6 +6,9 @@
     <meta name="theme-color" content="#0b3d2e">
     <title inertia>{{ config('app.name', 'Invitación') }}</title>
 
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=outfit:400,500,600,700,800,900|bebas-neue:400" rel="stylesheet" />
 
