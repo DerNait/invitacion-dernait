@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f6b40"/>
+      <stop offset="1" stop-color="#082b21"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#pbg)"/>
+  <!-- Señal de parqueo -->
+  <g>
+    <circle cx="400" cy="210" r="95" fill="#0b3d2e" stroke="#ffd24a" stroke-width="6"/>
+    <text x="400" y="258" font-family="Arial, sans-serif" font-size="130" font-weight="900"
+      fill="#ffe082" text-anchor="middle">P</text>
+  </g>
+  <!-- Líneas de parqueo -->
+  <g stroke="#ffe082" stroke-width="4" opacity="0.6">
+    <line x1="180" y1="360" x2="180" y2="430"/>
+    <line x1="280" y1="360" x2="280" y2="430"/>
+    <line x1="380" y1="360" x2="380" y2="430"/>
+    <line x1="480" y1="360" x2="480" y2="430"/>
+    <line x1="580" y1="360" x2="580" y2="430"/>
+    <line x1="180" y1="360" x2="620" y2="360"/>
+  </g>
+  <text x="400" y="468" font-family="Arial, sans-serif" font-size="24" font-weight="800"
+    fill="#ffe082" text-anchor="middle">PARQUEO JUNTO AL EDIFICIO SEKKEI</text>
+  <text x="400" y="80" font-family="Arial, sans-serif" font-size="18"
+    fill="#c8f0d8" text-anchor="middle" opacity="0.7">📷 Reemplaza con la foto del parqueo</text>
+</svg>

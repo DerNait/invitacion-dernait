@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.vue';
+
+@theme {
+    /* Tipografías */
+    --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    --font-display: 'Bebas Neue', 'Outfit', sans-serif;
+
+    /* Paleta mundialista: verde campo, dorado trofeo, rojo/acentos */
+    --color-pitch-50: #eafaf1;
+    --color-pitch-100: #c8f0d8;
+    --color-pitch-200: #93e0b4;
+    --color-pitch-300: #57c98c;
+    --color-pitch-400: #2faa6a;
+    --color-pitch-500: #18834f;
+    --color-pitch-600: #0f6b40;
+    --color-pitch-700: #0b3d2e;
+    --color-pitch-800: #082b21;
+    --color-pitch-900: #051c16;
+
+    --color-gold-300: #ffe082;
+    --color-gold-400: #ffd24a;
+    --color-gold-500: #f5b50f;
+    --color-gold-600: #d39400;
+
+    --color-grass: #1f9d57;
+
+    /* Animaciones */
+    --animate-float: float 3s ease-in-out infinite;
+    --animate-spin-slow: spin 9s linear infinite;
+    --animate-bounce-ball: bounceBall 2.2s ease-in-out infinite;
+    --animate-shimmer: shimmer 2.5s linear infinite;
+    --animate-pulse-ring: pulseRing 2s ease-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes bounceBall {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-22px) rotate(180deg); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes pulseRing {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    100% { transform: scale(2.2); opacity: 0; }
+}
+
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
+    body {
+        background-color: var(--color-pitch-900);
+        color: #f8fafc;
+        overflow-x: hidden;
+    }
+}
+
+@layer utilities {
+    /* Patrón de césped a rayas para fondos tipo cancha */
+    .bg-pitch-stripes {
+        background-image: repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.04) 0,
+            rgba(255, 255, 255, 0.04) 7%,
+            transparent 7%,
+            transparent 14%
+        );
+    }
+
+    /* Texto con relleno dorado y brillo */
+    .text-gold-shine {
+        background: linear-gradient(90deg, #d39400, #ffe082, #fff6cc, #ffe082, #d39400);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: var(--animate-shimmer);
+    }
+
+    .drop-shadow-gold {
+        filter: drop-shadow(0 2px 10px rgba(245, 181, 15, 0.35));
+    }
+}
+
+/* Mapa Leaflet: encajar con el tema y bordes redondeados */
+.leaflet-container {
+    font-family: var(--font-sans);
+    background: var(--color-pitch-800);
+}
+.leaflet-control-attribution {
+    font-size: 9px;
+    opacity: 0.6;
+}

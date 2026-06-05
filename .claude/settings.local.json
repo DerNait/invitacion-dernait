@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh *)",
+      "Bash(rsync -az --stats -e \"ssh -i ~/.ssh/id_ed25519 -p 17\" root@13.216.221.146:/var/www/ ./sitios/)",
+      "Bash(rsync -az --stats -e \"ssh -i ~/.ssh/id_ed25519 -p 17\" root@13.216.221.146:/home/ ./home/)",
+      "Bash(sort -k2)",
+      "Bash(mkdir -p ../nginx_diferido)",
+      "Bash(mv haloapi.dernait.com.conf ../nginx_diferido/)",
+      "Bash(rsync -az --stats --exclude='haloapi/' -e \"ssh -o ConnectTimeout=20\" ./sitios/ root@167.233.42.11:/var/www/)",
+      "Bash(rsync -az -e \"ssh -o ConnectTimeout=20\" ./nginx_adaptado/ root@167.233.42.11:/etc/nginx/sites-available/)",
+      "Bash(ssh-keygen -lf ~/.ssh/id_ed25519.pub)",
+      "Bash(ssh-keygen -lf ~/.ssh/id_ed25519)",
+      "Bash(command -v sshpass)",
+      "Bash(sshpass -p 'derPass2004' ssh -p 17 -o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o ConnectTimeout=15 root@167.233.42.11 \"echo '   OK root@17 por CONTRASEÑA -> '\\\\$\\(whoami\\)\")",
+      "Bash(sshpass -p 'derUPass2025' ssh -p 17 -o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no -o ConnectTimeout=15 ubuntu@167.233.42.11 \"echo '   OK ubuntu@17 por CONTRASEÑA -> '\\\\$\\(whoami\\) ' \\(sudo: '\\\\$\\(sudo -n true 2>/dev/null && echo si || echo 'requiere pass'\\)'\\)'\")",
+      "Bash(sshpass -p 'derPass2004' ssh -p 17 -o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no root@167.233.42.11 \"echo '   root@17 contraseña OK'\")",
+      "Bash(sshpass -p 'derUPass2025' ssh -p 17 -o PreferredAuthentications=password -o PubkeyAuthentication=no -o StrictHostKeyChecking=no ubuntu@167.233.42.11 \"echo '   ubuntu@17 contraseña OK'\")"
+    ]
+  }
+}

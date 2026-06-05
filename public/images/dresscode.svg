@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f6b40"/>
+      <stop offset="1" stop-color="#082b21"/>
+    </linearGradient>
+    <linearGradient id="jersey" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffd24a"/>
+      <stop offset="1" stop-color="#f5b50f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <g opacity="0.08" fill="#ffffff">
+    <rect x="0" y="0" width="75" height="600"/>
+    <rect x="150" y="0" width="75" height="600"/>
+    <rect x="300" y="0" width="75" height="600"/>
+    <rect x="450" y="0" width="75" height="600"/>
+  </g>
+  <!-- Camiseta -->
+  <g transform="translate(300 290)">
+    <path transform="translate(-150 -150)"
+      d="M105 40 L60 70 L20 120 L55 165 L90 140 L90 280 L210 280 L210 140 L245 165 L280 120 L240 70 L195 40 C180 70 120 70 105 40 Z"
+      fill="url(#jersey)" stroke="#0b3d2e" stroke-width="6" stroke-linejoin="round"/>
+    <text x="0" y="40" font-family="Arial, sans-serif" font-size="90" font-weight="900"
+      fill="#0b3d2e" text-anchor="middle">10</text>
+  </g>
+  <text x="300" y="520" font-family="Arial, sans-serif" font-size="34" font-weight="800"
+    fill="#ffe082" text-anchor="middle">CAMISETA DE TU SELECCIÓN</text>
+  <text x="300" y="558" font-family="Arial, sans-serif" font-size="20"
+    fill="#c8f0d8" text-anchor="middle" opacity="0.8">Reemplaza esta imagen por la tuya</text>
+</svg>
