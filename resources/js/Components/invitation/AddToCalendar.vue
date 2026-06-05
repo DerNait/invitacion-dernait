@@ -31,7 +31,7 @@ onClickOutside(root, () => (open.value = false));
         >
             <div
                 v-if="open"
-                class="absolute left-1/2 -translate-x-1/2 mt-2 w-60 z-20 rounded-2xl bg-pitch-700 ring-1 ring-white/15 shadow-2xl overflow-hidden"
+                class="absolute left-1/2 -translate-x-1/2 mt-2 w-60 z-50 rounded-2xl bg-pitch-700 ring-1 ring-white/15 shadow-2xl overflow-hidden"
             >
                 <a
                     :href="event.googleCalendarUrl"

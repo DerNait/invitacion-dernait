@@ -44,11 +44,11 @@ defineProps({
                 </Reveal>
             </div>
 
-            <Reveal :delay="320">
-                <div class="mt-7 flex justify-center">
-                    <AddToCalendar :event="event" />
-                </div>
-            </Reveal>
+            <!-- Sin wrapper Reveal: su transform crearía un stacking context que dejaría
+                 el dropdown por debajo de la siguiente sección. -->
+            <div class="mt-7 flex justify-center">
+                <AddToCalendar :event="event" />
+            </div>
         </div>
     </section>
 </template>
