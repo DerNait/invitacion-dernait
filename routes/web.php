@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 // Invitación pública
 Route::get('/', [InvitationController::class, 'show'])->name('invitation');
+Route::get('/invitacion.ics', [InvitationController::class, 'calendar'])->name('calendar');
 Route::post('/rsvp', [RsvpController::class, 'store'])->name('rsvp.store');
 
 // Autenticación del anfitrión

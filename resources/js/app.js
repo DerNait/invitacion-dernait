@@ -14,9 +14,9 @@ import {
     faChartSimple, faPeopleGroup, faQuoteLeft, faHeart, faMapLocationDot,
     faUtensils, faBowlFood, faMoon, faTruckFast, faSquareParking, faTv,
     faMagnifyingGlassPlus, faMagnifyingGlassMinus, faExpand,
-    faEye, faEyeSlash, faRotateLeft, faTrashCan,
+    faEye, faEyeSlash, faRotateLeft, faTrashCan, faDownload, faCalendarPlus,
 } from '@fortawesome/free-solid-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faWhatsapp, faGoogle, faApple } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
     faFutbol, faLocationDot, faCalendarDays, faClock, faShirt, faTrophy,
@@ -25,7 +25,8 @@ library.add(
     faChartSimple, faPeopleGroup, faQuoteLeft, faHeart, faMapLocationDot,
     faUtensils, faBowlFood, faMoon, faTruckFast, faSquareParking, faTv,
     faMagnifyingGlassPlus, faMagnifyingGlassMinus, faExpand,
-    faEye, faEyeSlash, faRotateLeft, faTrashCan, faWhatsapp,
+    faEye, faEyeSlash, faRotateLeft, faTrashCan, faDownload, faCalendarPlus,
+    faWhatsapp, faGoogle, faApple,
 );
 
 const appName = import.meta.env.VITE_APP_NAME || 'Invitación';

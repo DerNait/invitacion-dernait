@@ -1,5 +1,6 @@
 <script setup>
 import Reveal from '../ui/Reveal.vue';
+import AddToCalendar from './AddToCalendar.vue';
 
 defineProps({
     event: { type: Object, required: true },
@@ -42,6 +43,12 @@ defineProps({
                     </div>
                 </Reveal>
             </div>
+
+            <Reveal :delay="320">
+                <div class="mt-7 flex justify-center">
+                    <AddToCalendar :event="event" />
+                </div>
+            </Reveal>
         </div>
     </section>
 </template>

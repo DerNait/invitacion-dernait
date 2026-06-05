@@ -14,4 +14,15 @@ class InvitationController extends Controller
             'event' => EventData::all(),
         ]);
     }
+
+    /**
+     * Descarga el evento como archivo .ics (Apple Calendar, Outlook, etc.).
+     */
+    public function calendar()
+    {
+        return response(EventData::ics(), 200, [
+            'Content-Type' => 'text/calendar; charset=utf-8',
+            'Content-Disposition' => 'attachment; filename="cumple-kevin.ics"',
+        ]);
+    }
 }

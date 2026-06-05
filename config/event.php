@@ -23,6 +23,8 @@ return [
 
     // Fecha y hora del evento (ISO 8601). Se usa para la cuenta regresiva.
     'datetime' => env('EVENT_DATETIME', '2026-06-20 13:00:00'),
+    // Hora de fin (para el evento que se agrega al calendario). Ajústala si quieres.
+    'end_datetime' => env('EVENT_END_DATETIME', '2026-06-20 21:00:00'),
     'timezone' => env('EVENT_TIMEZONE', 'America/Guatemala'),
 
     // Texto legible de fecha y hora (lo que se muestra al invitado)
