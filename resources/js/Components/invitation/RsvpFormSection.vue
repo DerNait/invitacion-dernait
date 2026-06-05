@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, nextTick } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import Reveal from '../ui/Reveal.vue';
 
@@ -56,6 +56,13 @@ const submit = () => {
             onSuccess: () => {
                 lastAttending.value = form.attending;
                 submitted.value = true;
+                // Lleva suavemente a la sección de confirmación para ver el mensaje de éxito.
+                nextTick(() => {
+                    document.getElementById('confirmar')?.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    });
+                });
             },
         });
 };
