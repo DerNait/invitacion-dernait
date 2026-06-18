@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ExportController;
 use App\Http\Controllers\Admin\RsvpAdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\InvitationController;
@@ -22,6 +23,7 @@ Route::post('/logout', [LoginController::class, 'destroy'])->middleware('auth')-
 // Panel de confirmaciones (protegido)
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/export', [ExportController::class, 'guests'])->name('admin.export');
     Route::delete('/admin/rsvps/{rsvp}', [RsvpAdminController::class, 'destroy'])->name('admin.rsvps.destroy');
     Route::post('/admin/rsvps/{rsvp}/restore', [RsvpAdminController::class, 'restore'])->name('admin.rsvps.restore');
 });

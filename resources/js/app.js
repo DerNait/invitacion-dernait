@@ -14,7 +14,7 @@ import {
     faChartSimple, faPeopleGroup, faQuoteLeft, faHeart, faMapLocationDot,
     faUtensils, faBowlFood, faMoon, faTruckFast, faSquareParking, faTv,
     faMagnifyingGlassPlus, faMagnifyingGlassMinus, faExpand,
-    faEye, faEyeSlash, faRotateLeft, faTrashCan, faDownload, faCalendarPlus,
+    faEye, faEyeSlash, faRotateLeft, faTrashCan, faDownload, faCalendarPlus, faFileWord,
 } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp, faGoogle, faApple } from '@fortawesome/free-brands-svg-icons';
 
@@ -25,7 +25,7 @@ library.add(
     faChartSimple, faPeopleGroup, faQuoteLeft, faHeart, faMapLocationDot,
     faUtensils, faBowlFood, faMoon, faTruckFast, faSquareParking, faTv,
     faMagnifyingGlassPlus, faMagnifyingGlassMinus, faExpand,
-    faEye, faEyeSlash, faRotateLeft, faTrashCan, faDownload, faCalendarPlus,
+    faEye, faEyeSlash, faRotateLeft, faTrashCan, faDownload, faCalendarPlus, faFileWord,
     faWhatsapp, faGoogle, faApple,
 );
 

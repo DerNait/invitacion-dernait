@@ -113,15 +113,26 @@ const logout = () => router.post('/logout');
                     </button>
                 </div>
 
-                <button
-                    v-if="trashed.length"
-                    @click="showHidden = !showHidden"
-                    :class="showHidden ? 'bg-pitch-600 text-white' : 'bg-pitch-700 text-pitch-100/80 hover:bg-pitch-600'"
-                    class="inline-flex items-center gap-2 rounded-full ring-1 ring-white/10 px-4 py-2 text-sm font-semibold transition active:scale-95"
-                >
-                    <FaIcon :icon="['fas', showHidden ? 'eye-slash' : 'eye']" />
-                    {{ showHidden ? 'Ocultar lista' : `Ver ocultas (${trashed.length})` }}
-                </button>
+                <div class="flex flex-wrap items-center gap-2">
+                    <a
+                        href="/admin/export"
+                        class="inline-flex items-center gap-2 rounded-full bg-gold-500 hover:bg-gold-400 text-pitch-900 px-4 py-2 text-sm font-bold transition active:scale-95"
+                        title="Descargar lista de asistentes en Word (.docx)"
+                    >
+                        <FaIcon :icon="['fas', 'file-word']" />
+                        Exportar a Word
+                    </a>
+
+                    <button
+                        v-if="trashed.length"
+                        @click="showHidden = !showHidden"
+                        :class="showHidden ? 'bg-pitch-600 text-white' : 'bg-pitch-700 text-pitch-100/80 hover:bg-pitch-600'"
+                        class="inline-flex items-center gap-2 rounded-full ring-1 ring-white/10 px-4 py-2 text-sm font-semibold transition active:scale-95"
+                    >
+                        <FaIcon :icon="['fas', showHidden ? 'eye-slash' : 'eye']" />
+                        {{ showHidden ? 'Ocultar lista' : `Ver ocultas (${trashed.length})` }}
+                    </button>
+                </div>
             </div>
 
             <!-- Confirmaciones ocultas -->
